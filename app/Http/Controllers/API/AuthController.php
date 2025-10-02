@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    // Signup
     public function register(RegisterRequest $request)
     {
         $data = $request->validated(); // call request validation
@@ -31,7 +30,6 @@ class AuthController extends Controller
         ], 201);
     }
 
-    // Login
     public function login(LoginRequest $request)
     {
         $data = $request->validated();
@@ -58,7 +56,6 @@ class AuthController extends Controller
         return response()->json($request->user());
     }
 
-    // Logout (revoke current token)
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();
